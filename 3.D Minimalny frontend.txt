@@ -1,0 +1,20 @@
+index.html:
+<!doctype html>
+<html>
+<body>
+  <h1>AI Diagnostic — Dashboard</h1>
+  <pre id="out"></pre>
+  <script>
+    async function fetchDiag(){
+      const resp = await fetch("https://twoj-backend.example.com/analyze", {
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({device_id:"abc", dtc:[], pids:{}})
+      });
+      const data = await resp.json();
+      document.getElementById("out").innerText = data.analysis_text;
+    }
+    fetchDiag();
+  </script>
+</body>
+</html>
